@@ -12,12 +12,16 @@
             return;
         }
     }
+
+    function handleRegister() {
+        register = !register;
+    }
 </script>
 
 <!--Форма логина-->
 <div class="authContainer">
     <div>
-        <a href="https://youtu.be/TIbL0VOE900?t=1426">Lesson</a>
+        <a href="https://youtu.be/TIbL0VOE900?t=2819">Lesson</a>
     </div>
     <form>
         <h1>{register ? "Регистрация" : "Войти"}</h1>
@@ -33,11 +37,14 @@
 
             <input bind:value={password} type="password" placeholder="password"/>
         </label>
-        <label>
-            <p class={confirmPass ? 'above' : 'center'}>Confirm password</p>
+        {#if register}
+            <label>
+                <p class={confirmPass ? 'above' : 'center'}>Confirm password</p>
 
-            <input bind:value={confirmPass} type="password" placeholder="Confirm password"/>
-        </label>
+                <input bind:value={confirmPass} type="password" placeholder="Confirm password"/>
+            </label>
+        {/if}
+
         <button type="button">Зарегистрировать</button>
     </form>
     <div class="options">
@@ -45,14 +52,14 @@
         {#if register}
             <div>
                 <p>Аккаунт существует?</p>
-                <p>Войти</p>
+                <p on:click={handleRegister} on:keydown={()=>{}}>Войти</p>
             </div>
-            {:else}
+        {:else}
             <div>
                 <p>Отсутствует учетная запись?</p>
-                <p>Зарегистрируйтесь</p>
+                <p on:click={handleRegister} on:keydown={()=>{}}>Зарегистрируйтесь</p>
             </div>
-            {/if}
+        {/if}
     </div>
 </div>
 
@@ -156,6 +163,9 @@
         padding: 14px 0;
         overflow: hidden;
         font-size: 0.9rem;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
     }
 
     .options > p {
@@ -180,8 +190,21 @@
     .options > p::after {
         right: 100%;
     }
+
     .options > p::before {
         left: 100%;
+    }
+
+    .options div {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        justify-content: center;
+    }
+
+    .options div p:last-of-type {
+        color: cyan;
+        cursor: pointer;
     }
 
 </style>
