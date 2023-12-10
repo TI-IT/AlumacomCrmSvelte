@@ -21,7 +21,8 @@
 <!--Форма логина-->
 <div class="authContainer">
     <div>
-        <a href="https://youtu.be/TIbL0VOE900?t=2819">Lesson</a>
+        <a href="https://youtu.be/TIbL0VOE900?t=3821">Lesson</a>
+        <a href="https://console.firebase.google.com/project/svelte-fullstack-31279/firestore/data/~2F">Cloud Firestore</a>
     </div>
     <form>
         <h1>{register ? "Регистрация" : "Войти"}</h1>
@@ -193,6 +194,18 @@
 
     .options > p::before {
         left: 100%;
+    }
+
+    .options div {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        justify-content: center;
+    }
+
+    .options div p:last-of-type {
+        color: cyan;
+        cursor: pointer;
     }
 
     .options div {
